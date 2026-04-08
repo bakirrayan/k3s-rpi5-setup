@@ -1,0 +1,60 @@
+site_name: K3s on Raspberry Pi 5
+site_description: Production-ready single-node Kubernetes cluster setup guide
+site_author: Rayan
+site_url: https://yourusername.github.io/k3s-rpi5-setup
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+repo_name: yourusername/k3s-rpi5-setup
+repo_url: https://github.com/yourusername/k3s-rpi5-setup
+
+nav:
+  - Home: index.md
+  - Setup Guides:
+    - "01 — OS Preparation": 01-os-preparation.md
+    - "02 — K3s Installation": 02-k3s-installation.md
+    - "03 — MetalLB": 03-metallb.md
+    - "04 — ingress-nginx": 04-ingress-nginx.md
+    - "05 — cert-manager": 05-cert-manager.md
+    - "06 — Longhorn Storage": 06-longhorn.md
+    - "07 — Cloudflare DNS + DDNS": 07-cloudflare-ddns.md
+    - "08 — Router Port Forwarding": 08-port-forwarding.md
+    - "09 — Deploying a Service": 09-deploying-a-service.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
