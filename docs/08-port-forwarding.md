@@ -29,14 +29,12 @@ kubectl get svc -n ingress-nginx
 
 ---
 
-## Huawei HG8245H5 (example)
+## Router setup (general)
 
-1. Log in to `http://192.168.x.1`
-2. Go to **Forward Rules** → **IPv4 Port Mapping**
-3. Click **New**
-4. Type: **Application**
-5. For HTTP: select **Web Server (HTTP)** — set internal host to ingress IP → **Add** → **Apply**
-6. For HTTPS: select **Secure Web Server (HTTPS)** — set internal host to ingress IP → **Add** → **Apply**
+1. Log in to your router admin panel — usually at `http://192.168.x.1`
+2. Look for a section named **Port Forwarding**, **Port Mapping**, **NAT**, or **Virtual Servers**
+3. Create two rules as shown in the table above
+4. Save and apply
 
 ---
 
