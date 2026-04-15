@@ -46,6 +46,9 @@
 7. [07 — Cloudflare DNS + DDNS](07-cloudflare-ddns.md)
 8. [08 — Router Port Forwarding](08-port-forwarding.md)
 9. [09 — Deploying a Service](09-deploying-a-service.md)
+10. [10 — WireGuard VPN](10-wireguard-vpn.md)
+11. [11 — Cloudflare Zero Trust](11-cloudflare-zero-trust.md)
+12. [12 — DNS-01 cert-manager](12-dns01-cert-manager.md)
 
 ---
 
