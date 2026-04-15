@@ -37,3 +37,6 @@ Full step-by-step guides available at the GitHub Pages site.
 | 07 | Cloudflare DNS + DDNS |
 | 08 | Router Port Forwarding |
 | 09 | Deploying a Service |
+| 10 | WireGuard VPN |
+| 11 | Cloudflare Zero Trust |
+| 12 | DNS-01 cert-manager |
