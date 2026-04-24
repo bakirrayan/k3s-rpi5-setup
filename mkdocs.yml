@@ -1,7 +1,7 @@
 site_name: K3s on Raspberry Pi 5
-site_description: Production-ready single-node Kubernetes cluster setup guide
+site_description: Production-ready Kubernetes cluster setup guide
 site_author: Rayan
-site_url: https://yourusername.github.io/k3s-rpi5-setup
+site_url: https://bakirrayan.github.io/k3s-rpi5-setup
 
 theme:
   name: material
@@ -29,8 +29,8 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
-repo_name: yourusername/k3s-rpi5-setup
-repo_url: https://github.com/yourusername/k3s-rpi5-setup
+repo_name: bakirrayan/k3s-rpi5-setup
+repo_url: https://github.com/bakirrayan/k3s-rpi5-setup
 
 nav:
   - Home: index.md
@@ -44,9 +44,11 @@ nav:
     - "07 — Cloudflare DNS + DDNS": 07-cloudflare-ddns.md
     - "08 — Router Port Forwarding": 08-port-forwarding.md
     - "09 — Deploying a Service": 09-deploying-a-service.md
-    - "10 — WireGuard VPN": 10-wireguard-vpn.md
-    - "11 — Cloudflare Zero Trust": 11-cloudflare-zero-trust.md
-    - "12 — DNS-01 cert-manager": 12-dns01-cert-manager.md
+    - "10 — Cloudflare Zero Trust": 11-cloudflare-zero-trust.md
+    - "11 — DNS-01 cert-manager": 12-dns01-cert-manager.md
+    - "12 — Prometheus + Grafana": 13-prometheus-grafana.md
+    - "13 — n8n": 14-n8n.md
+    - "14 — Security Hardening": 15-security-hardening.md
 
 markdown_extensions:
   - admonition

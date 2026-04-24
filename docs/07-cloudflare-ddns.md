@@ -129,5 +129,42 @@ SUCCESS: yourdomain.com -- Updated successfully to x.x.x.x
 
 ---
 
+## Fix — ddclient starts before DNS is ready
+
+On boot, ddclient sometimes starts before the network DNS is fully available, causing it to fail silently. Add a startup delay:
+
+```bash
+sudo mkdir -p /etc/systemd/system/ddclient.service.d
+sudo nano /etc/systemd/system/ddclient.service.d/override.conf
+```
+
+Add:
+
+```ini
+[Service]
+ExecStartPre=/bin/sleep 30
+```
+
+Reload:
+
+```bash
+sudo systemctl daemon-reload
+```
+
+---
+
+## DNS record strategy
+
+Use only two A records in Cloudflare:
+
+| Type | Name | Value | Proxy |
+|---|---|---|---|
+| A | `@` | your WAN IP | Proxied (orange cloud) |
+| A | `*` | your WAN IP | Proxied (orange cloud) |
+
+The wildcard `*` covers all subdomains automatically. Do not add explicit per-service records — they become stale when your IP changes unless also listed in ddclient.conf.
+
+---
+
 !!! success "Ready"
     Proceed to [08 — Router Port Forwarding](08-port-forwarding.md)
