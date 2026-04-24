@@ -65,6 +65,45 @@ longhorn-static      driver.longhorn.io
 
 ---
 
+## Step 5 — Enable Prometheus metrics
+
+Create a ServiceMonitor so Prometheus scrapes Longhorn metrics. This enables the Longhorn Grafana dashboards (IDs 16888 and 22705):
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: longhorn
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app: longhorn-manager
+  namespaceSelector:
+    matchNames:
+    - longhorn-system
+  endpoints:
+  - port: manager
+    path: /metrics
+EOF
+```
+
+Verify Prometheus picked it up:
+
+```bash
+kubectl get servicemonitor -n monitoring
+```
+
+Then in Grafana → **Dashboards** → **Import** → enter ID `16888` or `22705` to get the Longhorn dashboards.
+
+!!! note
+    Allow 1-2 minutes after creating the ServiceMonitor for Prometheus to start scraping and data to appear in Grafana.
+
+---
+
 !!! note "Disk usage"
     Longhorn uses available free space on your NVMe SSD. With a 500GB drive and Ubuntu using ~5GB, you have ~495GB available for persistent volumes.
 
