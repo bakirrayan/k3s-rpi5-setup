@@ -65,7 +65,54 @@ longhorn-static      driver.longhorn.io
 
 ---
 
-## Step 5 — Enable Prometheus metrics
+## Step 5 — Expose Longhorn UI
+
+Create an ingress to access the Longhorn dashboard at `https://longhorn.yourdomain.com`:
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - longhorn.yourdomain.com
+    secretName: longhorn-tls
+  rules:
+  - host: longhorn.yourdomain.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: longhorn-frontend
+            port:
+              number: 80
+EOF
+```
+
+Cloudflare Zero Trust protects it automatically via the wildcard policy.
+
+---
+
+## Step 6 — Set replica count for single node
+
+By default Longhorn creates 3 replicas per volume. On a single node cluster this causes all volumes to show as **Degraded**.
+
+Fix globally: Longhorn UI → **Settings** → `Default Replica Count` → set to `1`.
+
+Fix per volume: click the volume → **Update Replicas** → set to `1`.
+
+---
+
+## Step 7 — Enable Prometheus metrics
 
 Create a ServiceMonitor so Prometheus scrapes Longhorn metrics. This enables the Longhorn Grafana dashboards (IDs 16888 and 22705):
 
